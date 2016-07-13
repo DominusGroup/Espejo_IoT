@@ -110,7 +110,6 @@ class getPulseApp(object):
             i = i+1
             self.key_handler()
 
-        print self.processor.bpm
         for cam in self.cameras:
             cam.cam.release()
         if self.send_serial:
@@ -127,5 +126,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     App = getPulseApp(args)
     App.main_loop()
-    print("fin de programa")
+    print(App.processor.bpm)
     sys.exit()
