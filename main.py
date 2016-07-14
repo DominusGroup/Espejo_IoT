@@ -1,4 +1,7 @@
 import get_pulse2 
-#from speech_recognition import audio2text
+from SpeechControl import audio2text
 
-get_pulse2.main_pulse()
+if audio2text == 'pulsaciones':
+    get_pulse2.main_pulse()
+
+
