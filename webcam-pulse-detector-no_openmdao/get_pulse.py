@@ -10,7 +10,6 @@ import socket
 import sys
 
 
-
 class getPulseApp(object):
 
     def __init__(self, args):
@@ -105,10 +104,10 @@ class getPulseApp(object):
                 self.sock.sendto(str(self.processor.bpm), self.udp)
 
             # handle any key presses
-            if i == 15:
-                self.toggle_search()
+            if i == 15 : 
+                self.toggle_search()              
             i = i+1
-            self.key_handler()
+            self.key_handler()            
 
         for cam in self.cameras:
             cam.cam.release()
@@ -117,14 +116,15 @@ class getPulseApp(object):
         if self.send_udp:
             self.sock.close()
 
-if __name__ == "__main__":
+#while __name__ == "__main__":
+def main_pulse():            
     parser = argparse.ArgumentParser(description='Webcam pulse detector.')
     parser.add_argument('--serial', default=None,help='serial port destination for bpm data')
     parser.add_argument('--baud', default=None,help='Baud rate for serial transmission')
     parser.add_argument('--udp', default=None,help='udp address:port destination for bpm data')
-
+            
     args = parser.parse_args()
     App = getPulseApp(args)
     App.main_loop()
     print(App.processor.bpm)
-    sys.exit()
+
